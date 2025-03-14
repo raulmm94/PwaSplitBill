@@ -6,6 +6,7 @@ import ManualDivision from "./routes/ManualDivision";
 import SetTotal from "./routes/SetTotal";
 import EqualDivision from "./routes/EqualDivision";
 import AddItemScreen from "./routes/AddItemScreen";
+import FinalSummary from "./routes/FinalSummary";
 
 function App() {
   console.log("App Component Rendered");
@@ -19,6 +20,7 @@ function App() {
       <Route path="/manual-division" element={<ManualDivision />} />
       <Route path="/equal-division" element={<EqualDivision />} />
       <Route path="/add-item-screen" element={<AddItemScreen />} />
+      <Route path="/final-summary" element={<FinalSummary />} />
     </Routes>
   );
 }
