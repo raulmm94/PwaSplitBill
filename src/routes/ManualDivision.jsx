@@ -24,11 +24,12 @@ function ManualDivision() {
     <div className="flex flex-col items-center justify-center h-screen p-4">
       {!showAddItemScreen ? (
         <>
-          <h1 className="text-2xl font-bold">División Manual</h1>
+          <h1 className="font-bold mb-4 text-center">División Manual</h1>
           <div className="mt-4 text-xl font-bold">Total restante: {remaining.toFixed(2)}€</div>
           <button
-            className="mt-4 bg-blue-500 text-white px-6 py-3 rounded-lg"
+            className={`mt-4 px-6 py-3 rounded-lg text-white ${remaining === 0 ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500'}`}
             onClick={() => setShowAddItemScreen(true)}
+            disabled={remaining === 0}
           >
             + Agregar ítem
           </button>
