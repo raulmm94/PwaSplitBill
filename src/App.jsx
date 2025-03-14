@@ -5,6 +5,7 @@ import SelectMethod from "./routes/SelectMethod";
 import ManualDivision from "./routes/ManualDivision";
 import SetTotal from "./routes/SetTotal";
 import EqualDivision from "./routes/EqualDivision";
+import AddItemScreen from "./routes/AddItemScreen";
 
 function App() {
   console.log("App Component Rendered");
@@ -17,6 +18,7 @@ function App() {
       <Route path="/select-method" element={<SelectMethod />} />
       <Route path="/manual-division" element={<ManualDivision />} />
       <Route path="/equal-division" element={<EqualDivision />} />
+      <Route path="/add-item-screen" element={<AddItemScreen />} />
     </Routes>
   );
 }
