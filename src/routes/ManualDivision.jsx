@@ -20,6 +20,12 @@ function ManualDivision() {
     setShowAddItemScreen(false);
   };
 
+  const deleteItem = (index) => {
+    const itemToDelete = items[index];
+    setRemaining(remaining + itemToDelete.value); // Devuelve el valor del ítem al total restante
+    setItems(items.filter((_, i) => i !== index)); // Elimina el ítem de la lista
+  };
+
   const handleDivideRemainingEqually = () => {
     if (remaining > 0) {
       addItem(remaining.toFixed(2), names); // Divide el restante entre todos los participantes
@@ -54,8 +60,16 @@ function ManualDivision() {
           {/* Lista de ítems agregados */}
           <ul className="mt-4 w-3/4">
             {items.map((item, index) => (
-              <li key={index} className="border p-2 rounded mt-2">
-                {item.value}€ dividido entre {item.participants.length} personas
+              <li key={index} className="border p-2 rounded mt-2 flex justify-between items-center">
+                <span>
+                  {item.value}€ dividido entre {item.participants.length} personas
+                </span>
+                <button
+                  className="bg-red-500 text-white px-3 py-1 rounded"
+                  onClick={() => deleteItem(index)}
+                >
+                  X
+                </button>
               </li>
             ))}
           </ul>
