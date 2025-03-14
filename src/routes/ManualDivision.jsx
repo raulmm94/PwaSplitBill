@@ -20,12 +20,20 @@ function ManualDivision() {
     setShowAddItemScreen(false);
   };
 
+  const handleDivideRemainingEqually = () => {
+    if (remaining > 0) {
+      addItem(remaining.toFixed(2), names); // Divide el restante entre todos los participantes
+    }
+  };
+
   return (
     <div className="flex flex-col items-center justify-center h-screen p-4">
       {!showAddItemScreen ? (
         <>
-          <h1 className="font-bold mb-4 text-center">División Manual</h1>
+          <h1 className="text-2xl font-bold">División Manual</h1>
           <div className="mt-4 text-xl font-bold">Total restante: {remaining.toFixed(2)}€</div>
+
+          {/* Botón para agregar ítem */}
           <button
             className={`mt-4 px-6 py-3 rounded-lg text-white ${remaining === 0 ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500'}`}
             onClick={() => setShowAddItemScreen(true)}
@@ -33,6 +41,17 @@ function ManualDivision() {
           >
             + Agregar ítem
           </button>
+
+          {/* Botón para dividir el restante por igual */}
+          <button
+            className={`mt-4 px-6 py-3 rounded-lg text-white ${remaining === 0 ? 'bg-gray-400 cursor-not-allowed' : 'bg-green-500'}`}
+            onClick={handleDivideRemainingEqually}
+            disabled={remaining === 0}
+          >
+            Resto por igual
+          </button>
+
+          {/* Lista de ítems agregados */}
           <ul className="mt-4 w-3/4">
             {items.map((item, index) => (
               <li key={index} className="border p-2 rounded mt-2">
@@ -41,6 +60,7 @@ function ManualDivision() {
             ))}
           </ul>
 
+          {/* Botones de navegación */}
           <div className="flex gap-4 mt-6">
             <button
               className="mt-6 bg-gray-500 text-white px-6 py-3 rounded-lg"
